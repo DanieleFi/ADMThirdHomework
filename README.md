@@ -1,6 +1,5 @@
-# ADMThirdHomework
-Third homework for Algorithmic Methods of Data Mining - Group #19
-
+# Homework 3 - Find the perfect place to stay in Texas!
+ 
 
 To do list:
 
