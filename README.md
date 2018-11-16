@@ -3,6 +3,11 @@
 
 To do list:
 
-  * problematico -- saving a file
-  *
-  *
+  * What should we remove
+  * 3.1) Conjunctive query finito, but Check again 3.1 if it is OK
+  * 3.2
+  *think about 4
+    1. prices
+    2. cities
+    3. sth else_?
+    
