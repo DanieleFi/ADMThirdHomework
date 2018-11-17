@@ -11,3 +11,5 @@ To do list:
     2. cities
     3. sth else_?
     
+heap data structure python to maintainm top k documents in  a query
+https://www.geeksforgeeks.org/heap-queue-or-heapq-in-python/ check this site
