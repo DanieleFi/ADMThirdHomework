@@ -15,32 +15,20 @@ heap data structure python to maintainm top k documents in  a query
 https://www.geeksforgeeks.org/heap-queue-or-heapq-in-python/ check this site
 
 
+4)
 
-#Sample code to implement cosine similarity
-import math
-from collections import Counter
-def get_cosine(vec1, vec2):
-    common = set(vec1.keys()) & set(vec2.keys())
-    numerator = sum([vec1[x] * vec2[x] for x in common])
 
-    sum1 = sum([vec1[x]**2 for x in vec1.keys()]) 
-    sum2 = sum([vec2[x]**2 for x in vec2.keys()]) 
-    denominator = math.sqrt(sum1) * math.sqrt(sum2)
-   
-    if not denominator:
-        return 0.0 
-    else:
-        return float(numerator) / denominator
+The user will give a text query, we will first get the query relatex documents with the search engine of Step 3.1 (?)
 
-def text_to_vector(text): 
-    words = text.split() 
-    return Counter(words)
+Then, to sort the according the new score we will define a new variable from existing ones, this variable (AverageBedrooms) is defined by the average_rate_per_night over the number of bedrooms in each airbnb. This will give us a "normalized" value according to which we can compare all the documents. 
 
-text1 = 'This is an article on analytics vidhya' 
-text2 = 'article on analytics vidhya is about natural language processing'
 
-vector1 = text_to_vector(text1) 
-vector2 = text_to_vector(text2) 
-cosine = get_cosine(vector1, vector2)
-cosine
+Thus we will create a new inverted index, where each documents will have its corresponding AB score, which we can precalculate because, like the tfidf score previously viewed, it is invariant with respect to the query.
 
+Since our key idea is to show to the consumer the most convenient result, we will have the results ranked by their "Conveniency", that is a percentage based on the maximum and minimum value of AB. The minimum value of AB will be the document that has 100% , because it would be the chapest solution on one bedroom, the maximum value of AB  we will assign 1% and we will rank all the other documents in respect to their "conveniency", given the max and min value. 
+Giving the percentage we will have the output ranking as requested. 
+
+We will realize that by calculatine the value which will count as 100% and divide it by 10. so we will have 10 chunks and when we make a  the query we will see which chunk is related to that value and we will give it the value of 10%,20%..etc. Given that we will have the output ranking
+
+
+-to do: think about how to study and realize the "Conveniency" ranking.
