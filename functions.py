@@ -41,6 +41,7 @@ def clean(airbnb_data):
     airbnb_data.latitude.replace(np.nan,'unknown',inplace=True)
     airbnb_data.longitude.replace(np.nan,'unknown',inplace=True)
 
+    
     #check where bedrooms_count doesn't have a value and save indexes of those records to a list
     null_value_idx=airbnb_data[airbnb_data.bedrooms_count.isnull()].index
     #if the word studio is mentioned in description then it is a studio otherwise 'unknown'
@@ -50,6 +51,10 @@ def clean(airbnb_data):
         else:
             airbnb_data.bedrooms_count[idx]='unknown'
         
+        
+    airbnb_data.url=airbnb_data.url.apply(lambda x:x.split('?')[0])
+    airbnb_data.drop_duplicates(subset='url',inplace=True)
+    
     return airbnb_data
 #%% Making of .tsv files
 
@@ -242,7 +247,7 @@ def compute_inverted_idx2(inverted_idx,vocabulary,tf_idf_dic):
     """
     method that computes the second inverted index
     
-    input:  
+    input:   
     output: inverted_idx2(dictionary, key=term_id, value=list of tuples (document_id,tf_idf value) )
     """
     inverted_idx2=defaultdict(list)
