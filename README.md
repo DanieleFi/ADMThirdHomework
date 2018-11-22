@@ -33,17 +33,17 @@ We will realize that by calculatine the value which will count as 100% and divid
  
 The repository consists of the following files:
 1. __`Homework 3 - group #19.ipynb`__: 
-	> A Jupyter notebook which provides the solutions to all research questions. 
+     > A Jupyter notebook which provides the following: 
 	
-		Search Engine 1 - Conjunctive query
-			* The first Search Engine evaluated queries based on the `description` and `title` of each document.  
+       Search Engine 1 - Conjunctive query
+    	    The first Search Engine evaluated queries based on the `description` and `title` of each document.  
  
-
-		Search Engine 2 - Conjunctive query & Ranking score
-			* In the new Search Engine, given a query, top-k documents related to the query should be returned sorted based on the calculated _Cosine similarity_  
+       Search Engine 2 - Conjunctive query & Ranking score
+	   In the new Search Engine, given a query, top-k documents related to the query should be returned 
+	   sorted based on the calculated _Cosine similarity_  
 			
 2. __`functions.py`__:
-	> A python script which provides all the functions used in the `Homework 3 - group #19.ipynb` notebook. 
+      > A python script which provides all the functions used in the `Homework 3 - group #19.ipynb` notebook. 
 
  
 All the documents were preprocessed by
