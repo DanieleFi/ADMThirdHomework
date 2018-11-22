@@ -1,23 +1,16 @@
 # Homework 3 - Find the perfect place to stay in Texas!
  
+Instructions:
+-- use just functions.py file and Homework 3 - group #19
+-- cells that are markdown put them as code cells and run them (they should be executed only once and then just saved as files and loaded from the working directory)
+-- there should be a folder named 'data' where .tsv files are created and stored
 
 To do list:
-
-  * What should we remove (room, airbnb, english words)
-  * 3.1) Conjunctive query finito, but Check again 3.1 if it is OK
-  * 3.2
-  *think about 4
-    1. prices
-    2. cities
-    3. sth else_?
-    
-heap data structure python to maintainm top k documents in  a query
-https://www.geeksforgeeks.org/heap-queue-or-heapq-in-python/ check this site
-
-
-4)
-
-
+  * Should we remove (non-english words)
+  * OUR SCORE, rating/#of bedrooms/price with heap data structure python to maintain top k documents in  a query 
+ 
+ 
+ 
 The user will give a text query, we will first get the query relatex documents with the search engine of Step 3.1 (?)
 
 Then, to sort the according the new score we will define a new variable from existing ones, this variable (AverageBedrooms) is defined by the average_rate_per_night over the number of bedrooms in each airbnb. This will give us a "normalized" value according to which we can compare all the documents. 
