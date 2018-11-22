@@ -1,5 +1,8 @@
 # Homework 3 - Find the perfect place to stay in Texas!
  
+The goal of this project was to create two different search engines that, given as input a query, return the houses that matches the query using the [airbnb data](https://www.kaggle.com/PromptCloudHQ/airbnb-property-data-from-texas).
+
+
 Instructions:
 -- use just functions.py file and Homework 3 - group #19
 -- cells that are markdown put them as code cells and run them (they should be executed only once and then just saved as files and loaded from the working directory)
@@ -8,7 +11,8 @@ Instructions:
 To do list:
   * Should we remove (non-english words)
   * OUR SCORE, rating/#of bedrooms/price with heap data structure python to maintain top k documents in  a query 
- 
+ !!!!!* Return in output *k* documents, or all the documents with non-zero similarity with the query when the results are less than _k_. You __must__ use a heap data structure (you can use Python libraries) for maintaining the *top-k* documents.
+
  
  
 The user will give a text query, we will first get the query relatex documents with the search engine of Step 3.1 (?)
@@ -25,3 +29,30 @@ We will realize that by calculatine the value which will count as 100% and divid
 
 
 -to do: think about how to study and realize the "Conveniency" ranking.
+ 
+ 
+The repository consists of the following files:
+1. __`Homework 3 - group #19.ipynb`__: 
+	> A Jupyter notebook which provides the solutions to all research questions. 
+	
+		Search Engine 1 - Conjunctive query
+			* The first Search Engine evaluated queries based on the `description` and `title` of each document.  
+ 
+
+		Search Engine 2 - Conjunctive query & Ranking score
+			* In the new Search Engine, given a query, top-k documents related to the query should be returned sorted based on the calculated _Cosine similarity_  
+			
+2. __`functions.py`__:
+	> A python script which provides all the functions used in the `Homework 3 - group #19.ipynb` notebook. 
+
+ 
+All the documents were preprocessed by
+1. Removing stopwords
+2. Removing punctuation
+3. Stemming
+4. Lower case
+ 
+
+ 
+ 
+ 
