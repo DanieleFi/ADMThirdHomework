@@ -42,7 +42,8 @@ The repository consists of the following files:
        Search Engine 2 - Conjunctive query & Ranking score
 	   In the new Search Engine, given a query, top-k documents related to the query should be returned 
 	   sorted based on the calculated _Cosine similarity_  
-       Search Engine 2 - Conjunctive query & Our new score
+	   
+       Search Engine 3 - Conjunctive query & Our new score
 			
 2. __`functions.py`__:
       > A python script which provides all the functions used in the `Homework 3 - group #19.ipynb` notebook. 
