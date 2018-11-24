@@ -486,67 +486,101 @@ def example_score():
     return user_input,explanatory_df
 
 def calculate_score(row,chosen_avg_price,chosen_no_rooms):
+    """
+    a method that calculates new score("BR SCORE") which will be used 
+    for sorting result documents
+    
+    input:  row - one row(document) of result set
+            chosen_avg_price - price user chose in the additional question
+            chosen_no_rooms - number of rooms user chose in the additional question
+    output: calculated score for one row
+    """
     temp_rate=0
     temp_beds=0
+    
+    #rules of R score calculation
     if row['average_rate_per_night']in range(0,int((chosen_avg_price/2)+1)):
         temp_rate=0.45
     if row['average_rate_per_night']in range(int(chosen_avg_price/2)+1,int(chosen_avg_price)+1):
         temp_rate=0.25 
     if row['average_rate_per_night'] in range(int(chosen_avg_price),int(chosen_avg_price+101)):
         temp_rate=0.05
+    #rules of B score calculation
     if row['bedrooms_count'] == chosen_no_rooms:
         temp_beds=0.25   
+    #BR score=B score+ R score
     return temp_rate+temp_beds
 
 def heapify_tuples_BR(BR_score_tuples):
+    """
+    method that makes heap from list of tuples 
+    
+    Input:  BR_score_tuples - list of tuples with calculated BR score->tuple(BR_score,document_id)
+    Output: list converted to heap structure
+    """
     heap = []
     for item in BR_score_tuples:
          heappush(heap, item)
     return heap
 
 def new_score(doc_id_rs,chosen_avg_price,chosen_no_rooms):
+    """
+    method that is used for creating list of BR scores for each result row and 
+    heapified list of tuples 
+    
+    Input:  doc_id_rs - list of document id's of the results from the first query
+            chosen_avg_price - price user chose in the additional question
+            chosen_no_rooms - number of rooms user chose in the additional question
+    Output: score_lst - list of scores with calculated BR score for each row in the result set
+            heapified_tuples - heapified list of tuples where ->tuple(BR_score,document_id)
+    """
+    #make subdataframe with columns 'average_rate_per_night','bedrooms_count' which will be used 
+    #for BR score calculation
     calc_result_df=pd.DataFrame()
     for i in doc_id_rs:
         #take one file
         df=pd.read_csv('data/doc_'+str(i)+'.tsv',sep='\t',usecols=['average_rate_per_night','bedrooms_count'],encoding='ISO-8859-1')
         calc_result_df=calc_result_df.append(df)
 
+    #initialize list for BR score for each result set row
     score_lst=[]
     for idx in range(len(calc_result_df)):
         score_lst.append(calculate_score(calc_result_df.iloc[idx],chosen_avg_price,chosen_no_rooms))
-        
+    
+    #initialize list for BR score for each result set row
     BR_score_tuples=[]
     for idx,val in enumerate(score_lst):
+        #BR_score_tuples (BR score,doc_id)
         BR_score_tuples.append((round(val,2),doc_id_rs[idx]))#idx index of row
         heapified_tuples=heapify_tuples_BR(BR_score_tuples)
     return score_lst,heapified_tuples
 
 def ranking_BR_score(heapified_tuples):
+    """
+    method that is used for sorting BR scores and creating ranks for result dataframe
+    
+    Input:  heapified_tuples - heapified list of tuples where ->tuple(BR_score,document_id)
+    Output: ranking_dict - dictionary(key=doc_id,value=rank)
+    """
+    #select nlargest or in this case all len(heapified_tuples) from the list which basically selects all but sorted
     sorted_scores=nlargest(len(heapified_tuples),heapified_tuples)
     sorted_docs_dic=defaultdict(list)
-
+    
+    
     for tup in sorted_scores:
         sorted_docs_dic[tup[0]].append(tup[1])
     sorted_docs_rank_dic=defaultdict(list)
+    
+    #making of rank so the same score has the same rank
     counter_rank=1
     for k,v in sorted_docs_dic.items():
         k=counter_rank
         sorted_docs_rank_dic[k]=v
         counter_rank=counter_rank+1
-        
+    #put it in the OrderedDict so the order doesn't change     
     ranking_dict=OrderedDict()
     for k,v in (sorted_docs_rank_dic.items()):
         for list_val in v:
             ranking_dict[list_val]=k
     return ranking_dict
-
-
-
-
-
-
-
-
-
-
 
