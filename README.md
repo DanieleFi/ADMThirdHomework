@@ -5,7 +5,7 @@
 </p>
 
 
-The goal of this project was analyzing the text of property listings and creating two different search engines using the [airbnb data](https://www.kaggle.com/PromptCloudHQ/airbnb-property-data-from-texas) that, given as input a query, return the houses that match the query. 
+The goal of this project was analyzing the text of property listings and creating three different search engines using the [airbnb data](https://www.kaggle.com/PromptCloudHQ/airbnb-property-data-from-texas) that, given as input a query, return the houses that match the query. 
 
 
 
