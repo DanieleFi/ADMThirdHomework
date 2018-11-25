@@ -7,6 +7,8 @@
 
 The goal of this project was analyzing the text of property listings and creating three different search engines using the [airbnb data](https://www.kaggle.com/PromptCloudHQ/airbnb-property-data-from-texas) that, given as input a query, return the houses that match the query. 
 
+Link to the rendered project:
+http://nbviewer.jupyter.org/github/dusicastepic/ADMThirdHomework/blob/master/Homework%203%20-%20group%20%2319.ipynb
 
 
 Instructions for project utilization:
