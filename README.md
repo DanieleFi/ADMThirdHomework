@@ -40,9 +40,7 @@ The repository consists of the following files:
       > A map that shows the houses in the radius user chose based on the location he entered. The code is in the `Homework 3 - group #19.ipynb` notebook. 
 
 Team members:
- *Dusica Stepic
- *Giulia Maslov
- *Daniele Figoli
+ * Dusica Stepic * Giulia Maslov * Daniele Figoli *
   
 
 
